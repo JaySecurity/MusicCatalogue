@@ -23,7 +23,7 @@ class Album(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
-    return f"Artist: {self.artist} Album: {self.album}"
+    return f"Artist: {self.artist_name} Album: {self.title}"
 
 class Track(models.Model):
   name = models.CharField(max_length=100)
