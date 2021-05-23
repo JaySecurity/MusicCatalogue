@@ -2,12 +2,18 @@
 <!-- prettier-ignore -->
 {% block content %}
 
-<h1>Log In</h1>
-
-<form action="{% url 'login' %}" method="post">
-  {% csrf_token%} {{ form.as_p }}
-  <input class="brown lighten-1" type="submit" value="Log In" />
-  <input type="hidden" name="next" value="{{ next }}" />
-</form>
+<div class="container">
+  <div class="row">
+    <h3>Log In</h3>
+  </div>
+</div>
+<div class= "container login-container">
+  <form action="{% url 'login' %}" method="post">
+    {% csrf_token%} 
+    {{ form.as_p }}
+    <input class="btn-small brown darken-1" type="submit" value="Log In" />
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+</div>
 
 {%endblock%}
