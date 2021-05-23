@@ -5,6 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from .models import Album
+
 # Create your views here.
 
 def home(request):
@@ -22,3 +24,6 @@ class SignUp(CreateView):
         super().form_valid(form)
         login(self.request, form.instance)
         return redirect(SignUp.success_url)
+
+class AlbumList(ListView):
+    model = Album
