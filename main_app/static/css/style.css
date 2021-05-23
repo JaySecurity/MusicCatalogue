@@ -1,0 +1,36 @@
+body{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-image: url(../images/test-bg.png);
+    background-size: cover;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.login-container{
+    height: 25rem;
+    margin-top: 5rem;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.089);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba(212, 152, 21, 0.144);
+}
+
+
+.signup-container{
+    height: 35rem;
+    margin-top: 5rem;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.041);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba(212, 152, 21, 0.144);
+}
