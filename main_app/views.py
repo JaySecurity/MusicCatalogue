@@ -12,3 +12,13 @@ def home(request):
 
 def about(request):
     return render(request, 'about.html')
+
+class SignUp(CreateView):
+    form_class = UserCreationForm
+    success_url = '/'
+    template_name = 'registration/signup.html'
+
+    def form_valid(self, form):
+        super().form_valid(form)
+        login(self.request, form.instance)
+        return redirect(SignUp.success_url)
