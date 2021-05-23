@@ -1,11 +1,12 @@
-from django.shortcuts import render, redirect
-from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect, render
+from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
+                                  UpdateView)
 
-from .models import Album
+from .models import Album, Track
 
 # Create your views here.
 
@@ -27,3 +28,14 @@ class SignUp(CreateView):
 
 class AlbumList(ListView):
     model = Album
+
+class AlbumAdd(LoginRequiredMixin, CreateView):
+  model = Album
+  fields = ['title', 'artist_name', 'genre', 'format']
+  success_url = '/albums/'
+
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    # Add Login here to make api request for tracks and album art
+    return super().form_valid(form)
+  
