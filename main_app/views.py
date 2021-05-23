@@ -26,7 +26,7 @@ class SignUp(CreateView):
         login(self.request, form.instance)
         return redirect(SignUp.success_url)
 
-class AlbumList(ListView):
+class AlbumList(LoginRequiredMixin ListView):
     model = Album
 
 class AlbumAdd(LoginRequiredMixin, CreateView):
