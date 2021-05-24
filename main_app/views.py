@@ -37,6 +37,8 @@ class SignUp(CreateView):
 
 class AlbumList(LoginRequiredMixin, ListView):
     model = Album
+    def get_queryset(self):
+      return Album.objects.filter(user = self.request.user)
 
 class AlbumAdd(LoginRequiredMixin, CreateView):
   model = Album
