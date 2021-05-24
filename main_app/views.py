@@ -56,7 +56,7 @@ class AlbumAdd(LoginRequiredMixin, CreateView):
     coverart_url = data['album'][0]['strAlbumThumb']
     if coverart_url:
       album.cover_art = coverart_url
-      album.save()
+    album.save()
     if album_id:
       url = "https://theaudiodb.p.rapidapi.com/track.php"
       querystring = {"m":album_id}

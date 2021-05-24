@@ -1,7 +1,9 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+<!-- prettier-ignore -->
+{% block content %}
 
 <h1>Album List</h1>
-
+{%for album in album_list %}
 <div class="container">
   <div class="col s12 m4">
     <div class="card medium">
@@ -19,4 +21,4 @@
     </div>
   </div>
 </div>
-{% endblock %}
+{% endfor %} {% endblock %}
