@@ -1,24 +1,30 @@
 {% extends 'base.html' %}
+<!-- prettier-ignore -->
+{% load static %}
+<!-- prettier-ignore -->
 {% block content %}
 
 <h1>Album List</h1>
-
+{%for album in album_list %}
 <div class="container">
   <div class="col s12 m4">
     <div class="card medium">
       <div class="card-image">
-        <img src="../../static/images/test-art.jpg">
+        {% if album.cover_art %}
+        <img src="{{album.cover_art}}" />
+        {% else %}
+        <img src="{% static '/images/blank_cd.png' %}" />
+        {% endif %}
       </div>
       <div class="card-content">
-        <p>Album Name : Yellow</p>
-        <p>Artist Name : Coldplay</p>
-        <p>Release Year : 2000</p>
+        <p>Album Name : {{album.title}}</p>
+        <p>Artist Name : {{album.artist_name}}</p>
+        <p>Release Year : {{album.release_year}}</p>
       </div>
       <div class="card-action">
         <a class="waves-effect waves-light btn-small brown darken-1">Details</a>
       </div>
     </div>
   </div>
-  
 </div>
-{% endblock %}
+{% endfor %} {% endblock %}

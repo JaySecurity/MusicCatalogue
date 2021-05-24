@@ -19,7 +19,9 @@ class Album(models.Model):
     choices = CHOICES,
     default= CHOICES[3][0]
   )
-  cover_art= models.CharField(max_length=250)
+  release_year = models.CharField(max_length=5, blank=True, null=True)
+  cover_art= models.CharField(max_length=250, blank=True, null=True)
+  cd_art = models.CharField(max_length=250, blank=True, null=True)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
