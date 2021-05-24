@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+<!-- prettier-ignore -->
+{% block content %}
+<h1 class="center">Add an Album</h1>
+<form class="add-form" action="" method="POST">
+  {%csrf_token%} {{form.as_p}}
+  <input
+    class="btm-small brown darken-1 white-text"
+    type="submit"
+    value="Add Album"
+  />
+</form>
+<script>
+  // initialize the format select
+  var selectEl = document.getElementById('id_format');
+  M.FormSelect.init(selectEl);
+</script>
+{% endblock %}
