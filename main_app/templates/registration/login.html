@@ -8,7 +8,7 @@
   </div>
 </div>
 
-<div class= "container login-container">
+<div class= "container form-container">
   <form action="{% url 'login' %}" method="post">
     {% csrf_token%} 
     {{ form.as_p }}

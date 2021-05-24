@@ -2,14 +2,14 @@
 <!-- prettier-ignore -->
 {% block content %}
 <h1 class="center">Add an Album</h1>
-<form class="add-form" action="" method="POST">
-  {%csrf_token%} {{form.as_p}}
-  <input
-    class="btm-small brown darken-1 white-text"
-    type="submit"
-    value="Add Album"
-  />
-</form>
+
+<div class= "container form-container add-album-container">
+  <form class="add-form" action="" method="POST">
+    {%csrf_token%} 
+    {{form.as_p}}
+    <input class="btn-small brown darken-1" type="submit" value="Add Album" />
+  </form>
+</div>
 <script>
   // initialize the format select
   var selectEl = document.getElementById('id_format');
