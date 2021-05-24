@@ -44,6 +44,7 @@ class AlbumAdd(LoginRequiredMixin, CreateView):
   success_url = '/albums/'
 
   def form_valid(self, form):
+    album_id = None
     form.instance.user = self.request.user
     album = form.save(commit=False) 
     print(album)
@@ -51,11 +52,13 @@ class AlbumAdd(LoginRequiredMixin, CreateView):
 
     querystring = {"s":form.instance.artist_name,"a":form.instance.title}
     response = requests.get(url, headers=headers, params=querystring)
-    data = response.json()
-    album_id = data['album'][0]['idAlbum']
-    coverart_url = data['album'][0]['strAlbumThumb']
-    if coverart_url:
-      album.cover_art = coverart_url
+    
+    if not response.json:
+      data = response.json()
+      album_id = data['album'][0]['idAlbum']
+      coverart_url = data['album'][0]['strAlbumThumb']
+      if coverart_url:
+        album.cover_art = coverart_url
     album.save()
     if album_id:
       url = "https://theaudiodb.p.rapidapi.com/track.php"
