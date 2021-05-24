@@ -1,3 +1,6 @@
+import os
+
+import requests
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -7,6 +10,12 @@ from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
 
 from .models import Album, Track
+
+# Headers for API calls
+headers = {
+    'x-rapidapi-key': os.getenv('X-RAPIDAPI-KEY'),
+    'x-rapidapi-host': os.getenv('X-RAPIDAPI-HOST')
+    }
 
 # Create your views here.
 
@@ -35,7 +44,32 @@ class AlbumAdd(LoginRequiredMixin, CreateView):
   success_url = '/albums/'
 
   def form_valid(self, form):
+    album_id = None
     form.instance.user = self.request.user
-    # Add Login here to make api request for tracks and album art
+    album = form.save(commit=False) 
+    url = "https://theaudiodb.p.rapidapi.com/searchalbum.php"
+
+    querystring = {"s":form.instance.artist_name,"a":form.instance.title}
+    response = requests.get(url, headers=headers, params=querystring)
+    data = response.json()
+    
+    if data['album'] != None:
+      album_id = data['album'][0]['idAlbum']
+      coverart_url = data['album'][0]['strAlbumThumb']
+      cd_art_url = data['album'][0]['strAlbumCDart']
+      album.cover_art = coverart_url
+      album.cd_art = cd_art_url
+      album.release_year = data['album'][0]['intYearReleased']
+      
+    album.save()
+    if album_id:
+      url = "https://theaudiodb.p.rapidapi.com/track.php"
+      querystring = {"m":album_id}
+      response = requests.get(url, headers=headers, params=querystring)
+      data = response.json()
+      tracks = data['track']
+      for track in tracks:
+        new_track = Track(name = track['strTrack'], track_no = track['intTrackNumber'], album = album)
+        new_track.save()
     return super().form_valid(form)
   
