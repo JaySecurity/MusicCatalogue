@@ -47,18 +47,20 @@ class AlbumAdd(LoginRequiredMixin, CreateView):
     album_id = None
     form.instance.user = self.request.user
     album = form.save(commit=False) 
-    print(album)
     url = "https://theaudiodb.p.rapidapi.com/searchalbum.php"
 
     querystring = {"s":form.instance.artist_name,"a":form.instance.title}
     response = requests.get(url, headers=headers, params=querystring)
+    data = response.json()
     
-    if not response.json:
-      data = response.json()
+    if data['album'] != None:
       album_id = data['album'][0]['idAlbum']
       coverart_url = data['album'][0]['strAlbumThumb']
-      if coverart_url:
-        album.cover_art = coverart_url
+      cd_art_url = data['album'][0]['strAlbumCDart']
+      album.cover_art = coverart_url
+      album.cd_art = cd_art_url
+      album.release_year = data['album'][0]['intYearReleased']
+      
     album.save()
     if album_id:
       url = "https://theaudiodb.p.rapidapi.com/track.php"
