@@ -22,16 +22,16 @@ main {
   border: 1px solid rgba(212, 152, 21, 0.144);
 }
 
-.signup-container {
-  height: 35rem;
-  margin-top: 5rem;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.041);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 10px;
-  border: 1px solid rgba(212, 152, 21, 0.144);
+.signup-container{
+    height: 42rem;
+    margin-top: 2rem;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.041);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba(212, 152, 21, 0.144);
 }
 
 .add-form {
