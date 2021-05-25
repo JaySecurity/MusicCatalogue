@@ -47,10 +47,14 @@
 
         <ul class="sidenav" id="mobile-demo">
           <li><a href="{% url 'about' %}">About</a></li>
-          <li><a href="{% url 'albums_index' %}">All Albums</a></li>
-          <li><a href="{% url 'albums_add' %}">Add an Album</a></li>
-          <li><a href="{% url 'signup' %}">Sign Up</a></li>
-          <li><a href="{% url 'login' %}">Log In</a></li>
+              {% if user.is_authenticated %}
+                <li><a href="{% url 'albums_index' %}">All Albums</a></li>
+                <li><a href="{% url 'albums_add' %}">Add an Album</a></li>
+                <li><a href="{% url 'logout' %}">{{user.get_username}} - Log Out</a></li>
+              {% else %}
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                <li><a href="{% url 'login' %}">Log In</a></li>
+              {% endif %}
         </ul>
       </nav>
     </header>

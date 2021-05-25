@@ -10,7 +10,7 @@
     <div class="card-action">
       <form action="{% url 'albums_delete' album.id %}" method="post">
         {%csrf_token%}
-        <input class="waves-effect waves-light btn-small brown darken-1 white-text" type="submit" value="Yes, Delete Album">
+        <input class="waves-effect waves-light btn-small brown darken-1" type="submit" value="Yes, Delete Album">
         <a class="waves-effect waves-light btn-small brown darken-1" href="{%url 'albums_detail' album.id %}">Cancel</a>
       </form>
     </div>
