@@ -81,7 +81,7 @@ class AlbumAdd(LoginRequiredMixin, CreateView):
       data = response.json()
       tracks = data['track']
       for track in tracks:
-        new_track = Track(name = track['strTrack'], track_no = track['intTrackNumber'], album = album)
+        new_track = Track(name = track['strTrack'], track_no = int(track['intTrackNumber']), album = album)
         new_track.save()
     return super().form_valid(form)
 
