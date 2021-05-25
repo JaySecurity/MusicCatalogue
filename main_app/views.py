@@ -84,3 +84,8 @@ class AlbumAdd(LoginRequiredMixin, CreateView):
         new_track = Track(name = track['strTrack'], track_no = track['intTrackNumber'], album = album)
         new_track.save()
     return super().form_valid(form)
+
+
+class AlbumUpdate(LoginRequiredMixin, UpdateView):
+  model = Album
+  fields = ['title', 'artist_name', 'genre', 'format', 'description']

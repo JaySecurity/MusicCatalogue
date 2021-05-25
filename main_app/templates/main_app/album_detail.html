@@ -11,7 +11,10 @@
           {%elif album.cd_art %}
           <img src="{{album.cd_art}}" />
           {% else %}
-          <img src="{%static '/images/blank_cd.png'%}" alt="default Image" />
+          <img
+            src="{%static '/images/default_album.png'%}"
+            alt="default Image"
+          />
           {% endif %}
         </div>
         <div class="card-content">
@@ -23,7 +26,7 @@
           {% endif %}
         </div>
         <div class="card-action">
-          <a href="#">Edit</a>
+          <a href="{%url 'albums_update' album.id %}">Edit</a>
           <a href="#" class="right">Delete</a>
         </div>
       </div>
