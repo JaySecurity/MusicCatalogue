@@ -52,8 +52,9 @@
         <div class="col s12">
             <ul class="collection with-header">
                 <li class="collection-header brown lighten-1"><h4>Tracklist</h4></li>
-                <li class="collection-item">Track 1</li>
-                <li class="collection-item">Track 2</li>
+                {% for track in album.track_set.all %}
+                    <li class="collection-item">{{ track.track_no }} {{ track.name }}</li>
+                {% endfor %}
             </ul>
         </div>
     </div>
