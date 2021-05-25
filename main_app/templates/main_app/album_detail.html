@@ -15,7 +15,12 @@
           {% endif %}
         </div>
         <div class="card-content">
+          <h5>Description</h5>
+          {%if album.description %}
           <p>{{album.description}}</p>
+          {%else%}
+          <p>No Description Found...</p>
+          {% endif %}
         </div>
         <div class="card-action">
           <a href="#">Edit</a>
