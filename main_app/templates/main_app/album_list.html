@@ -11,9 +11,9 @@
     <div class="card medium">
       <div class="card-image">
         {% if album.cover_art %}
-        <img src="{{album.cover_art}}" />
+        <img class="responsive-img" src="{{album.cover_art}}" />
         {% else %}
-        <img src="{% static '/images/blank_cd.png' %}" />
+        <img class="responsive-img" src="{% static '/images/blank_cd.png' %}" />
         {% endif %}
       </div>
       <div class="card-content">
