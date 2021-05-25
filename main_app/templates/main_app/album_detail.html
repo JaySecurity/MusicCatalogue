@@ -7,11 +7,11 @@
       <div class="card">
         <div class="card-image album-art-container">
           {% if album.album_art_3d %}
-          <img src="{{album.album_art_3d}}" />
+            <img src="{{album.album_art_3d}}" />
           {%elif album.cd_art %}
-          <img src="{{album.cd_art}}" />
+            <img src="{{album.cd_art}}" />
           {% else %}
-          <img src="{%static '/images/blank_cd.png'%}" alt="default Image" />
+            <img src="{%static '/images/blank_cd.png'%}" alt="default Image" />
           {% endif %}
         </div>
         <div class="card-content">
@@ -57,7 +57,37 @@
 
 <div class="section">
   <div class="row">
-    <div class="col s12">
+    <div class="col s12 m8">
+        <div class="slider">
+            <ul class="slides">
+                {% if album.cover_art %}
+                <li>
+                    <img src="{{ album.cover_art }}">
+                    <div class="caption center-align">
+                      <h5>Album Cover Art</h5>
+                    </div>
+                </li>
+                {% endif %}
+                {% if album.cd_art%}
+                <li>
+                    <img src="{{ album.cd_art }}">
+                    <div class="caption left-align">
+                        <h5>Album Cd Art</h5>
+                    </div>
+                </li>
+                {% endif %}
+                {% if album.album_back_art%}
+                <li>
+                    <img src="{{ album.album_back_art }}">
+                    <div class="caption right-align">
+                        <h5>Album Back Art</h5>
+                    </div>
+                </li>  
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="col s12 m4">
       <ul class="collection with-header">
         <li class="collection-header brown lighten-1"><h4>Tracklist</h4></li>
         {% for track in album.track_set.all %}
