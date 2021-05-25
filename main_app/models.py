@@ -33,7 +33,9 @@ class Album(models.Model):
 class Track(models.Model):
   name = models.CharField(max_length=100)
   album = models.ForeignKey(Album, on_delete=models.CASCADE)
-  track_no = models.CharField(max_length=4)
+  track_no = models.IntegerField()
 
   def __str__(self):
     return f"{self.name} from {self.album.title}"
+  class Meta:
+    ordering = ['track_no']
