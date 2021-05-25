@@ -55,3 +55,30 @@ main {
   margin: 0 auto;
 }
 
+.slider,
+.slides {
+  background: transparent !important;
+  height: 40vw !important;
+  width: 37vw !important;
+  max-height: 40vw !important;
+  max-width: 37vw !important;
+  
+}
+
+.slides img{
+  width: 100% !important;
+  height: unset !important;
+
+}
+
+@media screen and (max-width:595px)  {
+
+.slider,
+.slides {
+  height: 90vw !important;
+  width: 85vw !important;
+  max-height: 90vw !important;
+  max-width: 85vw !important;
+  
+}
+}
