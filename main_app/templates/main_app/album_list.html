@@ -17,8 +17,8 @@
         {% endif %}
       </div>
       <div class="card-content">
-        <p>Album Name : {{album.title}}</p>
-        <p>Artist Name : {{album.artist_name}}</p>
+        <p>Album Name : {{album.title|title}}</p>
+        <p>Artist Name : {{album.artist_name|title}}</p>
         <p>Release Year : {{album.release_year}}</p>
       </div>
       <div class="card-action">
