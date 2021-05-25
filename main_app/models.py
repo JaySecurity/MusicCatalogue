@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 
@@ -29,6 +30,9 @@ class Album(models.Model):
 
   def __str__(self):
     return f"Artist: {self.artist_name} Album: {self.title}"
+
+  def get_absolute_url(self):
+    return reverse('albums_detail', kwargs={'pk': self.id} )
 
 class Track(models.Model):
   name = models.CharField(max_length=100)

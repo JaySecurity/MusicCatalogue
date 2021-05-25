@@ -27,7 +27,7 @@
         </div>
         <div class="card-action">
           <a href="{%url 'albums_update' album.id %}">Edit</a>
-          <a href="#" class="right">Delete</a>
+          <a href="{% url 'albums_delete' album.id %}" class="right">Delete</a>
         </div>
       </div>
     </div>

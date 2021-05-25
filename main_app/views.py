@@ -89,3 +89,8 @@ class AlbumAdd(LoginRequiredMixin, CreateView):
 class AlbumUpdate(LoginRequiredMixin, UpdateView):
   model = Album
   fields = ['title', 'artist_name', 'genre', 'format', 'description']
+
+
+class AlbumDelete(LoginRequiredMixin, DeleteView):
+  model=Album
+  success_url = '/albums/'
