@@ -36,11 +36,7 @@ class Track(models.Model):
   track_no = models.IntegerField()
 
   def __str__(self):
-<<<<<<< HEAD
-    return f"{self.name} from {self.album.title}"
-=======
     return f"{self.name} from {self.album.title}"
   class Meta:
     ordering = ['track_no']
  
->>>>>>> 0249e0397d61df0b26c3ff928e61a80324835c99
