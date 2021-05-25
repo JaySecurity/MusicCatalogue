@@ -2,7 +2,7 @@
 <!-- prettier-ignore -->
 {% block content %}
 {% if album %}
-<h1 class="center">Edit {{album.title}}</h1>
+<h1 class="center">Edit {{album.title|title}}</h1>
 {%else%}
 <h1 class="center">Add an Album</h1>
 {%endif%}
@@ -11,7 +11,7 @@
   <form class="add-form" action="" method="POST">
     {%csrf_token%} 
     {{form.as_p}}
-    <input class="btn-small brown darken-1" type="submit"
+    <input class="btn brown darken-1" type="submit"
     {% if album %}
     value="Update Album" 
     {%else%}
