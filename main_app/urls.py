@@ -8,4 +8,5 @@ urlpatterns = [
     path('accounts/signup', views.SignUp.as_view(), name = 'signup'),
     path('albums/', views.AlbumList.as_view(), name = 'albums_index'),
     path('albums/add', views.AlbumAdd.as_view(), name = 'albums_add'),
+    path('albums/<int:pk>/', views.AlbumDetail.as_view(), name = 'albums_detail')
 ]

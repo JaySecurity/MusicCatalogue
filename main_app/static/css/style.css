@@ -2,12 +2,29 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background-color: #d7ccc8;
   background-image: url(../images/test-bg.png);
   background-size: cover;
 }
 
 main {
   flex: 1 0 auto;
+}
+
+.album-art-container{
+  display: flex;
+  justify-content: center;
+  padding: 20px 0px;
+}
+
+.detail-container{
+  padding-top: 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(212, 152, 21, 0.144);
+  background: rgba(255, 255, 255, 0.096);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .form-container {
@@ -38,6 +55,3 @@ main {
   margin: 0 auto;
 }
 
-.card-image img {
-  max-width: 225px;
-}
