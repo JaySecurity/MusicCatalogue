@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+<!-- prettier-ignore -->
+{% block content %}
+<div class="col s12 m6">
+  <div class="card">
+    <div class="card-content">
+      <h2>Confirm Delete</h2>
+      <h4>Are you sure you want to Delete {{album.title}}</h4>
+    </div>
+    <div class="card-action">
+      <form action="{% url 'albums_delete' album.id %}" method="post">
+        {%csrf_token%}
+        <input class="waves-effect waves-light btn-small brown darken-1 white-text" type="submit" value="Yes, Delete Album">
+        <a class="waves-effect waves-light btn-small brown darken-1" href="{%url 'albums_detail' album.id %}">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>  
+{% endblock %}
