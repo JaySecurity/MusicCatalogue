@@ -74,10 +74,7 @@
             <ul class="slides">
                 {% if not album.cover_art and not album.cd_art and not album.album_back_art %}
                 <li>
-                    <img class="responsive-img" src="{% static '/images/default_album.png' %}">
-                    <div class="caption center-align">
-                      <h5>No Album Art Found</h5>
-                    </div>
+                    <img class="responsive-img" src="{% static '/images/no-album-art.png' %}">
                 </li>
                 {% endif %}
                 {% if album.cover_art %}
