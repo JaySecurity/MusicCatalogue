@@ -40,6 +40,9 @@ class AlbumList(LoginRequiredMixin, ListView):
     def get_queryset(self):
       return Album.objects.filter(user = self.request.user)
 
+class AlbumDetail(LoginRequiredMixin, DetailView):
+  model = Album
+
 class AlbumAdd(LoginRequiredMixin, CreateView):
   model = Album
   fields = ['title', 'artist_name', 'genre', 'format']
@@ -74,4 +77,3 @@ class AlbumAdd(LoginRequiredMixin, CreateView):
         new_track = Track(name = track['strTrack'], track_no = track['intTrackNumber'], album = album)
         new_track.save()
     return super().form_valid(form)
-  

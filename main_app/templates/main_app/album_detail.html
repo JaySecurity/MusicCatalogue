@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Album Details</h1>
+
+<div class="section">
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="card-image album-art-container">
+                    <img src="../../static/images/test-album-art.png">
+                </div>
+                <div class="card-content">
+                    <p>"Homework is the debut studio album released by French electronic music duo Daft Punk in January 20, 1997. Considered a blend of house, techno, acid, funk and occasionally hip-hop, its success brought worldwide attention to French progressive house music and incited interest in French touch music, as several touch artists gained influence from Homework's style. According to The Village Voice, the album revived house music and broke free from the "Euro[dance] formula". Critically and commercially acclaimed, Homework has sold over two million copies worldwide and received several gold and platinum certifications.</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">Edit</a>
+                    <a href="#" class="right">Delete</a>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m6">
+            <ul class="collection">
+                <li class="collection-item avatar">
+                    <i class="material-icons circle black">album</i>
+                    <span class="title">Title</span>
+                    <p>{{ album.title }}</p>
+                </li>
+                <li class="collection-item avatar">
+                    <i class="material-icons circle red">people</i>
+                    <span class="title">Artist</span>
+                    <p>{{ album.artist_name }}</p>
+                </li>
+                <li class="collection-item avatar">
+                    <i class="material-icons circle orange">calendar_today</i>
+                    <span class="title">Release Year</span>
+                    <p>{{ album.release_year }}</p>
+                </li>
+                <li class="collection-item avatar">
+                    <i class="material-icons circle orange darken-4">library_music</i>
+                    <span class="title">Format</span>
+                    <p>{{ album.get_format_display }}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="section">
+    <div class="row">
+        <div class="col s12">
+            <ul class="collection with-header">
+                <li class="collection-header brown lighten-1"><h4>Tracklist</h4></li>
+                {% for track in album.track_set.all %}
+                    <li class="collection-item">{{ track.track_no }} {{ track.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
