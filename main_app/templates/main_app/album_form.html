@@ -1,13 +1,23 @@
 {% extends 'base.html' %}
 <!-- prettier-ignore -->
 {% block content %}
+{% if album %}
+<h1 class="center">Edit {{album.title}}</h1>
+{%else%}
 <h1 class="center">Add an Album</h1>
+{%endif%}
 
 <div class= "container form-container add-album-container">
   <form class="add-form" action="" method="POST">
     {%csrf_token%} 
     {{form.as_p}}
-    <input class="btn-small brown darken-1" type="submit" value="Add Album" />
+    <input class="btn-small brown darken-1" type="submit"
+    {% if album %}
+    value="Update Album" 
+    {%else%}
+    value="Add Album"
+    {%endif%}
+    />
   </form>
 </div>
 <script>
