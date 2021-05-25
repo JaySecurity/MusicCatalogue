@@ -3,7 +3,7 @@
 
 <div class="section">
   <div class="row">
-    <div class="col s12 m6">
+    <div class="col s12 m8">
       <div class="card">
         <div class="card-image album-art-container">
           {% if album.album_art_3d %}
@@ -31,8 +31,11 @@
         </div>
       </div>
     </div>
-    <div class="col s12 m6">
-      <ul class="collection">
+    <div class="col s12 m4">
+      <ul class="collection with-header">
+        <li class="collection-header brown lighten-1">
+            <h5 class="center-align">Album Details</h5>
+        </li>
         <li class="collection-item avatar">
           <i class="material-icons circle black">album</i>
           <span class="title">Title</span>
@@ -43,6 +46,11 @@
           <span class="title">Artist</span>
           <p>{{ album.artist_name|title }}</p>
         </li>
+        <li class="collection-item avatar">
+            <i class="material-icons circle brown">play_arrow</i>
+            <span class="title">Genre</span>
+            <p>{{ album.genre|title }}</p>
+          </li>
         <li class="collection-item avatar">
           <i class="material-icons circle orange">calendar_today</i>
           <span class="title">Release Year</span>
@@ -63,6 +71,14 @@
     <div class="col s12 m8">
         <div class="slider">
             <ul class="slides">
+                {% if not album.cover_art and not album.cd_art and not album.album_back_art %}
+                <li>
+                    <img src="{% static '/images/default_album.png' %}">
+                    <div class="caption center-align">
+                      <h5>No Album Art Found</h5>
+                    </div>
+                </li>
+                {% endif %}
                 {% if album.cover_art %}
                 <li>
                     <img src="{{ album.cover_art }}">
@@ -79,7 +95,7 @@
                     </div>
                 </li>
                 {% endif %}
-                {% if album.album_back_art%}
+                {% if album.album_back_art %}
                 <li>
                     <img src="{{ album.album_back_art }}">
                     <div class="caption right-align">
@@ -92,9 +108,9 @@
     </div>
     <div class="col s12 m4">
       <ul class="collection with-header">
-        <li class="collection-header brown lighten-1"><h4>Tracklist</h4></li>
+        <li class="collection-header brown lighten-1"><h5>Tracklist</h5></li>
         {% for track in album.track_set.all %}
-        <li class="collection-item">{{ track.track_no }} {{ track.name }}</li>
+        <li class="collection-item">{{ track.track_no }}.  {{ track.name }}</li>
         {% endfor %}
       </ul>
     </div>
