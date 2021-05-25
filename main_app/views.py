@@ -60,11 +60,18 @@ class AlbumAdd(LoginRequiredMixin, CreateView):
     
     if data['album'] != None:
       album_id = data['album'][0]['idAlbum']
-      coverart_url = data['album'][0]['strAlbumThumb']
-      cd_art_url = data['album'][0]['strAlbumCDart']
-      album.cover_art = coverart_url
-      album.cd_art = cd_art_url
-      album.release_year = data['album'][0]['intYearReleased']
+      if 'strDescriptionEN' in data['album'][0].keys():
+        album.description = data['album'][0]['strDescriptionEN']
+      if 'strAlbum3DFace' in data['album'][0].keys():
+        album.album_art_3d = data['album'][0]['strAlbum3DFace']
+      if 'strAlbumThumbBack' in data['album'][0].keys():
+        album.album_back_art = data['album'][0]['strAlbumThumbBack']
+      if 'strAlbumThumb' in data['album'][0].keys():
+        album.cover_art = data['album'][0]['strAlbumThumb']
+      if 'strAlbumCDart' in data['album'][0].keys():
+        album.cd_art = data['album'][0]['strAlbumCDart']
+      if 'intYearReleased' in data['album'][0].keys():
+        album.release_year = data['album'][0]['intYearReleased']
       
     album.save()
     if album_id:
