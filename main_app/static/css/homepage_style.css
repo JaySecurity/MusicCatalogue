@@ -1,0 +1,93 @@
+/* #8d6e63 
+#d7ccc8 */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: black;
+}
+
+.bg-image{
+  height: 100vh;
+  background-image: linear-gradient(to right bottom, rgba(255, 0, 0, 0.055), rgb(136, 108, 67, 0.5)), url(../images/splash.jpg);
+  background-size: cover;
+  background-position: top;
+}
+
+.main-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.cta-text{
+  color: white;
+}
+
+.site-name{
+  font-size: 60px;
+  display: block;
+  letter-spacing: 30px;
+}
+
+.slogan-text{
+  display: block;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.cta-button{
+  box-shadow: 0px 10px 14px -7px #473409;
+	background:linear-gradient(to bottom, #5d4037 5%, #6d4c41  100%);
+	border-radius:4px;
+	border:1px solid #3e2723;
+	display:inline-block;
+	cursor:pointer;
+	color:white;
+	font-family: sans-serif;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 12px;
+	text-decoration:none;
+	text-shadow:0px 2px 0px #3e2723;
+}
+
+@media screen and (max-width:1290px){
+  .main-container{
+    left:30%;
+  }
+  .site-name{
+    font-size: 50px;
+    letter-spacing: 20px;
+  }
+}
+
+@media screen and (max-width:930px){
+  .main-container{
+    left:20%;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .main-container{
+    left:10%;
+  }
+}
+
+@media screen and (max-width:560px) {
+  .main-container{
+    left:10%;
+  }
+  .site-name{
+    font-size: 30px;
+    letter-spacing: 10px;
+  }
+}
