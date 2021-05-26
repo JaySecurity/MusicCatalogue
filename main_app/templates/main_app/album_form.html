@@ -10,6 +10,11 @@
 <div class= "container form-container add-album-container">
   <form class="add-form" action="" method="POST">
     {%csrf_token%} 
+    <p>
+    <select name="albums" id="albums">
+      <option value="" disabled>Enter an artist for a list of albums</option>
+    </select>
+    </p>
     {{form.as_p}}
     <input class="btn brown darken-1" type="submit"
     {% if album %}
@@ -23,6 +28,38 @@
 <script>
   // initialize the format select
   var selectEl = document.getElementById('id_format');
+  var albumSelectEl = document.getElementById('albums');
+  const artistEl = document.getElementById('id_artist_name')
+  const titleEl = document.getElementById('id_title')
+  
+  
   M.FormSelect.init(selectEl);
+  M.FormSelect.init(albumSelectEl);
+
+  artistEl.addEventListener('focusout', albumLookup)
+  albumSelectEl.addEventListener('change', (e)=>{
+    console.log('Changed')
+    titleEl.value = albumSelectEl.value
+  })
+
+  async function albumLookup(e){
+    res = await fetch(`https://www.theaudiodb.com/api/v1/json/1/search.php?s=${artistEl.value}`, {"method": "GET"})
+    data = await res.json()
+    artistid = data.artists[0].idArtist
+    res = await fetch(`https://theaudiodb.p.rapidapi.com/album.php?i=${artistid}`, {
+	        "method": "GET",
+	        "headers": {
+		        "x-rapidapi-key": "a32b207c9amshaf28a01b8d9a98bp14749djsn71e82744b5fb",
+		        "x-rapidapi-host": "theaudiodb.p.rapidapi.com"
+	          }
+        })
+    data = await res.json()
+    albums = data.album
+    let html = albums.reduce((html, album) => html + `<option value="${album.strAlbum}">${album.strAlbum}</option>`, " ")
+    albumSelectEl.innerHTML = html
+    M.FormSelect.init(albumSelectEl);
+  }      
+      
 </script>
+
 {% endblock %}

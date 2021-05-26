@@ -47,6 +47,7 @@ class AlbumAdd(LoginRequiredMixin, CreateView):
   model = Album
   fields = ['title', 'artist_name', 'genre', 'format']
   success_url = '/albums/'
+  extra_context = {'headers':headers}
 
   def form_valid(self, form):
     album_id = None
