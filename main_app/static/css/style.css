@@ -75,6 +75,10 @@ main {
   
 }
 
+.artist_collection{
+  background-color: transparent !important;
+}
+
 .slides img{
   width: 100% !important;
   height: unset !important;

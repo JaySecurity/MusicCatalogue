@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container form-container">
+    <ul class="collection with-header">
+        <li class="collection-header brown"><h4>{{ album.artist_name|title }}</h4></li>
+        {% if artist.label %}
+            <li class="collection-item artist_collection">Label : {{ artist.label|title }}</li>
+        {% endif %}
+        {% if artist.country %}
+        <li class="collection-item artist_collection">Country : {{ artist.country|title }}</li>
+        {% endif %}
+        {% if artist.website %}
+        <li class="collection-item artist_collection">Website : {{ artist.website }}</li>
+        {% endif %}
+        {% if artist.facebook %}
+        <li class="collection-item artist_collection">Facebook : {{ artist.facebook }}</li>
+        {% endif %}
+        {% if artist.twitter %}
+        <li class="collection-item artist_collection">Twitter : {{ artist.twitter }}</li>
+        {% endif %}
+    </ul>
+</div>      
+
+{% endblock %}
