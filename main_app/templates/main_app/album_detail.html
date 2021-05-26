@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block content %} {%load static%}
 <h1 class="center">Album Details</h1>
 
+<!-- <div class="container"> -->
 <div class="section">
   <div class="row">
     <div class="col s12 m6">
@@ -8,7 +9,9 @@
         <div class="card-image album-art-container">
           {% if album.album_art_3d %}
             <img class="responsive-img" src="{{album.album_art_3d}}" />
-          {%elif album.cd_art %}
+          {% elif album.cover_art %}
+            <img class="responsive-img" src="{{album.cover_art}}" />
+          {% elif album.cd_art %}
             <img class="responsive-img" src="{{album.cd_art}}" />
           {% else %}
           <img
@@ -32,7 +35,7 @@
         </div>
       </div>
     </div>
-    <div class="col s12 m4 ">
+    <div class="col s12 m6 ">
       <ul class="collection with-header">
         <li class="collection-header brown lighten-2">
             <h5 class="center-align white-text">Album Details</h5>
@@ -97,7 +100,7 @@
             </ul>
         </div>
     </div>
-    <div class="col s12 m4">
+    <div class="col s12 m6">
       <ul class="collection with-header">
         <li class="collection-header brown lighten-2 white-text"><h5>Tracklist</h5></li>
         {% for track in album.track_set.all %}
@@ -107,10 +110,11 @@
     </div>
   </div>
 </div>
-
+<!-- </div> -->
 <script>document.addEventListener('DOMContentLoaded', function() {
   let elems = document.querySelectorAll('.slider');
   let instances = M.Slider.init(elems, {
+    indicators: false
   });
 });</script>
 {% endblock %}
