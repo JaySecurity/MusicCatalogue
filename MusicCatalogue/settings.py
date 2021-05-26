@@ -78,11 +78,7 @@ WSGI_APPLICATION = 'MusicCatalogue.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ijlbrymo',
-        'HOST': 'queenie.db.elephantsql.com',
-        'USER': 'ijlbrymo',
-        'PASSWORD': 'gXMq7FOjK4JmpNgW_kQ5Azsy0taC1QAY',
-        'PORT': '5432'
+        'NAME': 'audiophile',
         
     }
 }
@@ -133,3 +129,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/albums/'
 LOGOUT_REDIRECT_URL = '/'
+
+import django_heroku
+
+django_heroku.settings(locals())
