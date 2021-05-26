@@ -5,6 +5,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
@@ -124,3 +125,18 @@ def artist_page(request, album_id):
     'album': album,
     'artist': artist,
   })
+
+
+def album_search(request, artist):
+  # Lookup Artist Id
+  url = f"https://www.theaudiodb.com/api/v1/json/1/search.php?s={artist}"
+  response = requests.get(url)
+  data = response.json()
+  artistId = data['artists'][0]['idArtist']
+
+  # Lookup Album Based on Artist ID
+  url = f"https://theaudiodb.p.rapidapi.com/album.php"
+  querystring = {"i":artistId}
+  response = requests.get(url, headers=headers, params=querystring)
+  data = response.json()
+  return JsonResponse(data)
