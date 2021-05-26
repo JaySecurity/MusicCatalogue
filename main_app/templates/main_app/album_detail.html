@@ -44,9 +44,8 @@
         </li>
         <li class="collection-item avatar">
           <i class="material-icons circle red">people</i>
-          <span class="title">Artist</span>
-          
-          <p>{{ album.artist_name|title }} <a href="{% url 'artist_page' album.id %}" class="btn-flat">{{ album.artist_name|title }}</a></p>
+          <span class="title heading-artist">Artist</span>
+          <a href="{% url 'artist_page' album.id%}" class="btn-flat artist_link">{{ album.artist_name|title }}</a>
         </li>
         <li class="collection-item avatar">
             <i class="material-icons circle brown">play_arrow</i>
