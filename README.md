@@ -28,4 +28,4 @@
 [Trello Board](https://trello.com/b/vd3ORCMA/music-catalogue)
 
 ##### See it Live
-[Live on Heroku]()(coming soon)
+[Live on Heroku](https://audiophile2021.herokuapp.com/)
