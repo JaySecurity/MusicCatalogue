@@ -34,6 +34,9 @@ class Album(models.Model):
   def get_absolute_url(self):
     return reverse('albums_detail', kwargs={'pk': self.id} )
 
+  class Meta:
+    ordering = ['artist_name']
+
 class Track(models.Model):
   name = models.CharField(max_length=100)
   album = models.ForeignKey(Album, on_delete=models.CASCADE)
