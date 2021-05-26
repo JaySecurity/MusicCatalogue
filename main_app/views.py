@@ -91,7 +91,39 @@ class AlbumUpdate(LoginRequiredMixin, UpdateView):
   model = Album
   fields = ['title', 'artist_name', 'genre', 'format', 'description']
 
-
 class AlbumDelete(LoginRequiredMixin, DeleteView):
   model=Album
   success_url = '/albums/'
+<<<<<<< HEAD
+
+def artist_page(request, album_id):
+  album = Album.objects.get(id = album_id)
+  url = "https://theaudiodb.p.rapidapi.com/search.php"
+  querystring = {"s": album.artist_name}
+  response = requests.request("GET", url, headers = headers,params=querystring)
+  data = response.json()
+  if 'strLabel' in data['artists'][0].keys():
+    artist_label = data['artists'][0]['strLabel']
+  if 'strCountry' in data['artists'][0].keys():
+    artist_country = data['artists'][0]['strCountry']
+  if 'strWebsite' in data['artists'][0].keys():
+    artist_website = data['artists'][0]['strWebsite']
+  if 'strFacebook' in data['artists'][0].keys():
+    artist_facebook = data['artists'][0]['strFacebook']
+  if 'strTwitter' in data['artists'][0].keys():
+    artist_twitter = data['artists'][0]['strTwitter']
+  
+  artist = {
+    'label': artist_label,
+    'country': artist_country,
+    'website': artist_website,
+    'facebook': artist_facebook,
+    'twitter': artist_twitter,
+  }
+
+  return render(request, 'main_app/artist_page.html',{
+    'album': album,
+    'artist': artist,
+  })
+=======
+>>>>>>> 7d7a95f3185824f58a3fbbd62593061e598c34cd
