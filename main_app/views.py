@@ -94,7 +94,6 @@ class AlbumUpdate(LoginRequiredMixin, UpdateView):
 class AlbumDelete(LoginRequiredMixin, DeleteView):
   model=Album
   success_url = '/albums/'
-<<<<<<< HEAD
 
 def artist_page(request, album_id):
   album = Album.objects.get(id = album_id)
@@ -125,5 +124,3 @@ def artist_page(request, album_id):
     'album': album,
     'artist': artist,
   })
-=======
->>>>>>> 7d7a95f3185824f58a3fbbd62593061e598c34cd
