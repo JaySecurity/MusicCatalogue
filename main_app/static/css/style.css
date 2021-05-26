@@ -79,6 +79,24 @@ main {
   background-color: transparent !important;
 }
 
+.heading-artist{
+  display: block;
+}
+
+.artist_link{
+  /* display: block; */
+  padding: 0 10px;
+  text-decoration: none;
+  text-transform: capitalize;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.artist_link:hover{
+  background-color: #8d6e63;
+  color: white;
+}
+
 .slides img{
   width: 100% !important;
   height: unset !important;
