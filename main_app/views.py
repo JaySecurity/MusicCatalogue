@@ -46,7 +46,7 @@ class AlbumDetail(LoginRequiredMixin, DetailView):
 
 class AlbumAdd(LoginRequiredMixin, CreateView):
   model = Album
-  fields = ['title', 'artist_name', 'genre', 'format']
+  fields = ['artist_name','title','genre', 'format']
   success_url = '/albums/'
   extra_context = {'headers':headers}
 
