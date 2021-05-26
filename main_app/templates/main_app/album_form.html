@@ -45,16 +45,7 @@
   })
 
   async function albumLookup(e){
-    res = await fetch(`https://www.theaudiodb.com/api/v1/json/1/search.php?s=${artistEl.value}`, {"method": "GET"})
-    data = await res.json()
-    artistid = data.artists[0].idArtist
-    res = await fetch(`https://theaudiodb.p.rapidapi.com/album.php?i=${artistid}`, {
-	        "method": "GET",
-	        "headers": {
-		        "x-rapidapi-key": "a32b207c9amshaf28a01b8d9a98bp14749djsn71e82744b5fb",
-		        "x-rapidapi-host": "theaudiodb.p.rapidapi.com"
-	          }
-        })
+    res = await fetch(`/albums/search/${artistEl.value}`, {"method": "GET"})
     data = await res.json()
     albums = data.album
     let html = albums.reduce((html, album) => html + `<option value="${album.strAlbum}">${album.strAlbum}</option>`, " ")
