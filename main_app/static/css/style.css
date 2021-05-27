@@ -28,6 +28,14 @@ h5{
   font-size: 2.5rem;
 }
 
+ul.dropdown-content.select-dropdown li span {
+  color: #4e342e;
+}
+
+.select-wrapper input.select-dropdown:focus {
+  border-bottom: 1px solid #8d6e63 !important;
+}
+
 #id_title:focus, 
 #id_artist_name:focus, 
 #id_genre:focus, 
