@@ -81,7 +81,8 @@ h5{
 }
 
 .concert-container{
-  height: 20rem;
+  margin-top: 2rem;
+  height: 18rem;
 }
 
 .signup-container {
@@ -164,6 +165,10 @@ h5{
   position:absolute;
   right:10px;
   top:5px;
+}
+
+.songkick{
+  width: 10%;
 }
 
 @media screen and (max-width:600px)  {
