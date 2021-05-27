@@ -15,6 +15,12 @@ label {
   color: #4e342e;
 }
 
+h1{
+  color:#4e342e ;
+  font-family: 'Caveat', cursive;
+  font-weight: 500;
+}
+
 #id_title:focus, 
 #id_artist_name:focus, 
 #id_genre:focus, 
@@ -122,12 +128,17 @@ label {
 .artist_link:hover{
   background-color: #8d6e63;
   color: white;
+  border: 1px solid white;
 }
 
 .slides img{
   width: 100% !important;
   height: unset !important;
 
+}
+
+.track-form{
+  padding: 20px;
 }
 
 .track-add-btn{
