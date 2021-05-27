@@ -58,7 +58,11 @@
         <li class="collection-item avatar">
           <i class="material-icons circle orange">calendar_today</i>
           <span class="title">Release Year</span>
+          {%if album.release_year%}
           <p>{{ album.release_year }}</p>
+          {%else%}
+          <p>N/A</p>
+          {% endif %}
         </li>
         <li class="collection-item avatar">
           <i class="material-icons circle orange darken-4">library_music</i>
@@ -105,6 +109,8 @@
         <li class="collection-header brown lighten-2 white-text"><h5>Tracklist</h5></li>
         {% for track in album.track_set.all %}
         <li class="collection-item track-list-item">{{ track.track_no }}.  {{ track.name }} <span class="edit-btn"><a href="{% url 'edit_track' track.id %}" class="btn-small brown lighten-2">Edit</a></span> </li>
+        {%empty%}
+        <h5>No Tracks Available</h5>
         {% endfor %}
       </ul>
       <div class="card">
