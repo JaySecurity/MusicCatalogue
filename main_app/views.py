@@ -117,14 +117,18 @@ def artist_page(request, album_id):
   songkick_api = "tJVWLOEZgfxYjes0"
   second_url = "https://api.songkick.com/api/3.0/artists/mbid:" + artist_music_brainz_id + "/calendar.json?apikey=" + songkick_api
   r = requests.get(second_url)
-  concert = r.json()['resultsPage']['results']['event'][0]
-
-  concert_details = {
-    'displayName' : concert['displayName'],
-    'tickets': concert['uri'],
-    'start_date': concert['start']['date'],
-    'start_time': concert['start']['time'],
-  }
+  try:
+    concert = r.json()['resultsPage']['results']['event'][0]
+  except:
+    concert = ""
+  concert_details = {}
+  if concert:
+    concert_details = {
+      'displayName' : concert['displayName'],
+      'tickets': concert['uri'],
+      'start_date': concert['start']['date'],
+      'start_time': concert['start']['time'],
+    }
 
   artist = {
     'label': artist_label,

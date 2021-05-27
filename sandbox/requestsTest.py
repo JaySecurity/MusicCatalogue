@@ -54,12 +54,12 @@ headers = {
 # for track in tracks:
 #   print(f"{track['intTrackNumber']} - {track['strTrack']} ")
 
-musicbrainzid = "c8b03190-306c-4120-bb0b-6f2ebfc06ea9"
-apikey = "tJVWLOEZgfxYjes0"
-url = "https://api.songkick.com/api/3.0/artists/mbid:" + musicbrainzid + "/calendar.json?apikey=" + apikey
-response = requests.get(url)
-concert = response.json()['resultsPage']['results']['event'][0]
-displayName = concert['start']['date']
-print(displayName)
-print(url)
+# musicbrainzid = "c8b03190-306c-4120-bb0b-6f2ebfc06ea9"
+# apikey = "tJVWLOEZgfxYjes0"
+# url = "https://api.songkick.com/api/3.0/artists/mbid:" + musicbrainzid + "/calendar.json?apikey=" + apikey
+# response = requests.get(url)
+# concert = response.json()['resultsPage']['results']['event'][0]
+# displayName = concert['start']['date']
+# print(displayName)
+# print(url)
 
