@@ -27,8 +27,11 @@ label {
   box-shadow: 0 1px 0 0 #4e342e;
 }
 
+.brand-logo{
+  font-family: 'Monoton', cursive;
+}
+
 .signup-container{
-  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
   width: 40vw;
@@ -73,6 +76,10 @@ label {
   height: 40rem;
   margin-top: 2rem;
   padding-top: 60px;
+}
+
+.artist-container{
+  height: 35rem;
 }
 
 .add-form {
@@ -125,5 +132,18 @@ label {
   .slides {
     max-height: 90vw !important;
     max-width: 85vw !important;  
+  }
+}
+
+@media screen and (max-width: 1000px){
+  .signup-container{
+    width: 70vw;
+  }
+}
+
+@media screen and (max-width:600px)  {
+  .signup-container{
+    font-size: 10px;
+    width: 80vw;
   }
 }
