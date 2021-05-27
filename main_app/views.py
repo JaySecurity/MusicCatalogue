@@ -7,9 +7,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
+from django.urls.base import reverse_lazy
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
 
+from main_app.forms import TrackForm
+
+from .forms import TrackForm
 from .models import Album, Track
 
 # Headers for API calls
@@ -43,11 +47,14 @@ class AlbumList(LoginRequiredMixin, ListView):
 
 class AlbumDetail(LoginRequiredMixin, DetailView):
   model = Album
+  track_form = TrackForm()
+  extra_context = {'track_form': track_form}
 
 class AlbumAdd(LoginRequiredMixin, CreateView):
   model = Album
   fields = ['artist_name','title','genre', 'format']
   success_url = '/albums/'
+  
   extra_context = {'headers':headers}
 
   def form_valid(self, form):
@@ -127,6 +134,8 @@ def artist_page(request, album_id):
   })
 
 
+
+
 def album_search(request, artist):
   # Lookup Artist Id
   url = f"https://www.theaudiodb.com/api/v1/json/1/search.php?s={artist}"
@@ -140,3 +149,25 @@ def album_search(request, artist):
   response = requests.get(url, headers=headers, params=querystring)
   data = response.json()
   return JsonResponse(data)
+
+@login_required
+def add_track(request, album_id):
+  form = TrackForm(request.POST)
+  if form.is_valid():
+    new_track = form.save(commit=False)
+    new_track.album_id = album_id
+    new_track.save()
+  return redirect('albums_detail', pk=album_id)
+
+class EditTrack(LoginRequiredMixin, UpdateView):
+  model = Track
+  fields = ['track_no', 'name']  
+
+class TrackDelete(LoginRequiredMixin, DeleteView):
+  model= Track
+  #success_url = reverse_lazy('albums_detail', self.kwargs['album_id'])
+
+
+  def get_success_url(self):
+    return reverse_lazy('albums_detail', kwargs={'pk':self.kwargs['album_id']})
+  

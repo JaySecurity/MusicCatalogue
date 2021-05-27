@@ -12,5 +12,8 @@ urlpatterns = [
     path('albums/<int:pk>/edit', views.AlbumUpdate.as_view(), name = 'albums_update'),
     path('albums/<int:pk>/delete', views.AlbumDelete.as_view(), name = 'albums_delete'),
     path('albums/<int:album_id>/artist/', views.artist_page, name = "artist_page" ),
+    path('albums/<int:album_id>/tracks/add', views.add_track, name = "add_track" ),
+    path('tracks/<int:pk>/edit', views.EditTrack.as_view(), name = "edit_track" ),
+    path('albums/<int:album_id>/tracks/<int:pk>/delete', views.TrackDelete.as_view(), name = "delete_track" ),
     path('albums/search/<str:artist>/', views.album_search, name = "artist_search" ),
 ]

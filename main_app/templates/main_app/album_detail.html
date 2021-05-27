@@ -104,10 +104,20 @@
       <ul class="collection with-header">
         <li class="collection-header brown lighten-2 white-text"><h5>Tracklist</h5></li>
         {% for track in album.track_set.all %}
-        <li class="collection-item">{{ track.track_no }}.  {{ track.name }}</li>
+        <li class="collection-item track-list-item">{{ track.track_no }}.  {{ track.name }} <span class="edit-btn"><a href="{% url 'edit_track' track.id %}" class="btn-small brown lighten-2">Edit</a></span> </li>
         {% endfor %}
       </ul>
+      <div class="card">
+        <form class="track-form" action="{% url 'add_track' album.id %}" method="post">
+          {% csrf_token%}
+          {{track_form.as_p}}
+          <p class="center track-add-btn">
+          <input class="waves-effect waves-light btn-small brown lighten-1" type="submit" value="Add Track">
+          </p>
+        </form>
+      </div>
     </div>
+
   </div>
 </div>
 <!-- </div> -->

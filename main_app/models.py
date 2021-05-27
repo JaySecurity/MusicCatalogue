@@ -47,3 +47,7 @@ class Track(models.Model):
   class Meta:
     ordering = ['track_no']
  
+  def get_absolute_url(self):
+    return reverse('albums_detail', kwargs={'pk':self.album_id})
+
+  
