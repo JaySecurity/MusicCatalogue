@@ -17,9 +17,7 @@
     </select>
     </p>
     {% endif%}
-    <div class="input-field ">  
     {{form.as_p}}
-    </div>
     <input class="btn brown darken-1" type="submit"
     {% if album %}
     value="Update Album" 
@@ -29,29 +27,32 @@
     />
   </form>
 </div>
-
-
 <script>
   // initialize the format select
   var selectEl = document.getElementById('id_format');
-  var albumSelectEl = document.getElementById('auto-complete');
+  var albumSelectEl = document.getElementById('albums');
   const artistEl = document.getElementById('id_artist_name')
   const titleEl = document.getElementById('id_title')
   
   
   M.FormSelect.init(selectEl);
-  titleEl.setAttribute('autocomplete', 'off')
-  
+  M.FormSelect.init(albumSelectEl);
 
-  artistEl.addEventListener('focusout', async function() {
-    const data = {}
-    let res = await fetch(`/albums/search/${artistEl.value}`, {"method": "GET"})
-    let resData = await res.json()
-    let albums = resData.album
-    albums.forEach(album => data[album.strAlbum] = null)
-    let instances = M.Autocomplete.init(titleEl, {data})
-  });
+  artistEl.addEventListener('focusout', albumLookup)
+  albumSelectEl.addEventListener('change', (e)=>{
+    console.log('Changed')
+    titleEl.value = albumSelectEl.value
+  })
 
+  async function albumLookup(e){
+    res = await fetch(`/albums/search/${artistEl.value}`, {"method": "GET"})
+    data = await res.json()
+    albums = data.album
+    let html = albums.reduce((html, album) => html + `<option value="${album.strAlbum}">${album.strAlbum}</option>`, " ")
+    albumSelectEl.innerHTML = html
+    M.FormSelect.init(albumSelectEl);
+  }      
+      
 </script>
 
 {% endblock %}
