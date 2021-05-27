@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
 <div class="container form-container artist-container">
     <ul class="collection with-header">
-        <li class="collection-header brown"><h4>{{ album.artist_name|title }}</h4></li>
+        <li class="collection-header brown"><h5>{{ album.artist_name|title }}</h5></li>
         {% if artist.label %}
             <li class="collection-item artist_collection">Label : {{ artist.label|title }}</li>
         {% endif %}
@@ -24,12 +25,13 @@
 
 {% if concert %}
     <div class="container form-container concert-container">
-        <h3 class="center">Upcoming Event</h3>
-        <h5 class="center">{{ concert.displayName }}</h5>
-        <h5 class="center">Start Date & Time : {{ concert.start_date }} - {{ concert.start_time }}</h5>
-        <h5 class="center"><a href="{{ concert.tickets }}">Get Tickets</a></h5>
+        <h4 class="center">Upcoming Event</h4>
+        <p class="center">{{ concert.displayName }}</p>
+        <p class="center">Start Date & Time : {{ concert.start_date }} - {{ concert.start_time }}</p>
+        <p class="center"><a href="{{ concert.tickets }}">Get Tickets</a></p>
+        <img class="responsive-img songkick right" src="{% static '/images/songkick.png' %}" alt="songkick_img">
     </div>
 {% else %}
-    <h3 class="center">No Upcoming events Found!</h3>
+    <h3 class="center white-text">No Upcoming events Found!</h3>
 {% endif %}
 {% endblock %}
