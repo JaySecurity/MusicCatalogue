@@ -32,6 +32,7 @@
 
 
 #### Future Additions
-- [ ] Custom User Profile
-- [ ] Playlist Builder with Spotify API
+- [ ] Custom user profile
+- [ ] User image uploads for missing album art
+- [ ] Playlist builder with Spotify API
 - [ ] Lyric search for tracks
