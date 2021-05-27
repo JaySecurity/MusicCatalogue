@@ -121,7 +121,7 @@ def artist_page(request, album_id):
     artist_twitter = data['artists'][0]['strTwitter']
   if 'strMusicBrainzID' in data['artists'][0].keys():
     artist_music_brainz_id = data['artists'][0]['strMusicBrainzID']
-  songkick_api = "tJVWLOEZgfxYjes0"
+  songkick_api = os.getenv('SONGKICK_API')
   second_url = "https://api.songkick.com/api/3.0/artists/mbid:" + artist_music_brainz_id + "/calendar.json?apikey=" + songkick_api
   r = requests.get(second_url)
   try:
