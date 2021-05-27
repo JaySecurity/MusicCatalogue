@@ -22,4 +22,11 @@
     </ul>
 </div>      
 
+<div class="container">
+    <h3>Upcoming Event</h3>
+    <h5>{{ concert.displayName }}</h5>
+    <h5>Start Date & Time : {{ concert.start_date }} - {{ concert.start_time }}</h5>
+    <h5><a href="{{ concert.tickets }}">Get Tickets</a></h5>
+</div>
+
 {% endblock %}
