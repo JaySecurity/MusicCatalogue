@@ -27,21 +27,22 @@
 <script>
   // initialize the format select
   var selectEl = document.getElementById('id_format');
-  var albumSelectEl = document.getElementById('auto-complete');
   const artistEl = document.getElementById('id_artist_name')
   const titleEl = document.getElementById('id_title')
   
-  
   M.FormSelect.init(selectEl);
+
   titleEl.setAttribute('autocomplete', 'off')
   
 
   artistEl.addEventListener('focusout', async function() {
     const data = {}
+    // Send artist name to backend for api search of albums
     let res = await fetch(`/albums/search/${artistEl.value}`, {"method": "GET"})
     let resData = await res.json()
     let albums = resData.album
     albums.forEach(album => data[album.strAlbum] = null)
+    // add albums to Materialize CSS Auto-Complete Field
     let instances = M.Autocomplete.init(titleEl, {data})
   });
 

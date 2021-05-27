@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-<!-- prettier-ignore -->
+
 {% load static %}
-<!-- prettier-ignore -->
+
 {% block content %}
 
 <h1 class="center">Album List</h1>
@@ -19,7 +19,12 @@
       <div class="card-content">
         <p>Album Name : {{album.title|title}}</p>
         <p>Artist Name : {{album.artist_name|title}}</p>
-        <p>Release Year : {{album.release_year}}</p>
+        <p>Release Year : 
+          {%if album.release_year%}
+            {{album.release_year}}
+          {%else%}
+            N/A
+          {%endif%}</p>
       </div>
       <div class="card-action">
         <a href="{% url 'albums_detail' album.id %}" 
@@ -30,4 +35,5 @@
     </div>
   </div>
 </div>
-{% endfor %} {% endblock %}
+{% endfor %} 
+{% endblock %}
