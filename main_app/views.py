@@ -119,7 +119,24 @@ def artist_page(request, album_id):
     artist_facebook = data['artists'][0]['strFacebook']
   if 'strTwitter' in data['artists'][0].keys():
     artist_twitter = data['artists'][0]['strTwitter']
-  
+  if 'strMusicBrainzID' in data['artists'][0].keys():
+    artist_music_brainz_id = data['artists'][0]['strMusicBrainzID']
+  songkick_api = "tJVWLOEZgfxYjes0"
+  second_url = "https://api.songkick.com/api/3.0/artists/mbid:" + artist_music_brainz_id + "/calendar.json?apikey=" + songkick_api
+  r = requests.get(second_url)
+  try:
+    concert = r.json()['resultsPage']['results']['event'][0]
+  except:
+    concert = ""
+  concert_details = {}
+  if concert:
+    concert_details = {
+      'displayName' : concert['displayName'],
+      'tickets': concert['uri'],
+      'start_date': concert['start']['date'],
+      'start_time': concert['start']['time'],
+    }
+
   artist = {
     'label': artist_label,
     'country': artist_country,
@@ -131,6 +148,7 @@ def artist_page(request, album_id):
   return render(request, 'main_app/artist_page.html',{
     'album': album,
     'artist': artist,
+    'concert': concert_details
   })
 
 

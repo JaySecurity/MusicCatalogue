@@ -67,6 +67,10 @@ label {
   border: 1px solid rgba(212, 152, 21, 0.144);
 }
 
+.concert-container{
+  height: 20rem;
+}
+
 .signup-container {
   height: 42rem;
   margin-top: 2rem;
