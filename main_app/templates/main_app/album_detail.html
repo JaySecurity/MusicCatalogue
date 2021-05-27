@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col s12 m6">
       <div class="card">
-        <div class="card-image album-art-container">
+        <div class="card-image album-art-container brown lighten-2">
           {% if album.album_art_3d %}
             <img class="responsive-img" src="{{album.album_art_3d}}" />
           {% elif album.cover_art %}
@@ -111,7 +111,7 @@
         {% for track in album.track_set.all %}
         <li class="collection-item track-list-item">{{ track.track_no }}.  {{ track.name }} <span class="edit-btn"><a href="{% url 'edit_track' track.id %}" class="btn-small brown lighten-2">Edit</a></span> </li>
         {%empty%}
-        <h5>No Tracks Available</h5>
+        <p class='center'>No Tracks Available<p>
         {% endfor %}
       </ul>
       <div class="card">

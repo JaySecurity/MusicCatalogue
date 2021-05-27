@@ -16,17 +16,17 @@
         <img class="responsive-img" src="{% static '/images/blank_cd.png' %}" />
         {% endif %}
       </div>
-      <div class="card-content">
-        <p>Album Name : {{album.title|title}}</p>
-        <p>Artist Name : {{album.artist_name|title}}</p>
-        <p>Release Year : 
+      <div class="card-content brown lighten-4">
+        <p class="brown-text text-darken-2">Album Name : {{album.title|title}}</p>
+        <p class="brown-text text-darken-2">Artist Name : {{album.artist_name|title}}</p>
+        <p class="brown-text text-darken-2">Release Year : 
           {%if album.release_year%}
             {{album.release_year}}
           {%else%}
             N/A
           {%endif%}</p>
       </div>
-      <div class="card-action">
+      <div class="card-action brown lighten-4">
         <a href="{% url 'albums_detail' album.id %}" 
           class="waves-effect waves-light btn-small brown darken-1">
           Details

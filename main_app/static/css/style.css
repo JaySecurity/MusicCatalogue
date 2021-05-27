@@ -138,7 +138,7 @@ ul.dropdown-content.select-dropdown li span {
   text-decoration: none;
   text-transform: capitalize;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 6px;
 }
 
 .artist_link:hover{
