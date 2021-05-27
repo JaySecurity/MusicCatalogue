@@ -29,3 +29,9 @@
 
 ##### See it Live
 [Live on Heroku](https://audiophile2021.herokuapp.com/)
+
+
+#### Future Additions
+- [ ] Custom User Profile
+- [ ] Playlist Builder with Spotify API
+- [ ] Lyric search for tracks
