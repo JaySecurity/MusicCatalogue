@@ -183,8 +183,6 @@ class EditTrack(LoginRequiredMixin, UpdateView):
 
 class TrackDelete(LoginRequiredMixin, DeleteView):
   model= Track
-  #success_url = reverse_lazy('albums_detail', self.kwargs['album_id'])
-
 
   def get_success_url(self):
     return reverse_lazy('albums_detail', kwargs={'pk':self.kwargs['album_id']})
