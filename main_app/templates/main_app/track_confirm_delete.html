@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+<!-- prettier-ignore -->
+{% block content %}
+<div class="container form-container">
+  <div class="section">
+    <h2 class="center">Confirm Delete</h2>
+    <h5 class="center">Are you sure you want to Delete the track {{track.name|title}}</h5>
+  </div>
+  <br><br>
+  <div class="section">
+    <form action="{% url 'delete_track' track.album_id track.id %}" method="post">
+      {%csrf_token%}
+      <input class="waves-light btn-small brown darken-1" type="submit" value="Yes, Delete Track">
+      <a class="waves-effect waves-light btn-small brown darken-1 right" href="{%url 'albums_detail' track.album_id %}">Cancel</a>
+    </form> 
+  </div>
+</div> 
+{% endblock %}

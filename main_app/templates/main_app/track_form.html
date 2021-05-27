@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+<!-- prettier-ignore -->
+{% block content %}
+
+<h1 class="center">Edit {{track.name|title}}</h1>
+
+
+<div class= "container form-container add-album-container">
+  <form class="add-form" action="{%url 'edit_track' track.id %}" method="POST">
+    {%csrf_token%}
+    
+    {{form.as_p}}
+    <input class="btn-small brown darken-1" type="submit" value="Update Track"/>
+    <a href="{%url 'albums_detail' track.album_id %}" class="btn-small brown darken-1">Cancel</a>
+    <a href="{%url 'delete_track' track.album_id track.id %}" class="btn-small brown lighten-1">Delete Track</a>
+  </form>
+</div>
+
+
+{% endblock %}

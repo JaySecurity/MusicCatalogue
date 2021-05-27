@@ -9,14 +9,7 @@
 
 <div class= "container form-container add-album-container">
   <form class="add-form" action="" method="POST">
-    {%csrf_token%} 
-    {% if not object%}
-    <p>
-    <select name="albums" id="albums">
-      <option value="" disabled>Enter an artist name below</option>
-    </select>
-    </p>
-    {% endif%}
+    {%csrf_token%}
     <div class="input-field ">  
     {{form.as_p}}
     </div>
