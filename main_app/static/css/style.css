@@ -2,9 +2,11 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-image: linear-gradient(to right bottom, #efebe9, #8d6e63);
+  background-image: linear-gradient(to right bottom, #efebe9fb, #8d6e63f5), url(../images/pattern3.jpg);
   /* background-image: url(../images/test-bg.png); */
   background-size: cover;
+  background-repeat: space;
+  background-position: top;
 }
 
 main {
