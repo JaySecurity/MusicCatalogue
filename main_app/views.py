@@ -21,9 +21,10 @@ headers = {
     'x-rapidapi-key': os.getenv('X-RAPIDAPI-KEY'),
     'x-rapidapi-host': os.getenv('X-RAPIDAPI-HOST')
     }
+    
 songkick_api = os.getenv('SONGKICK_API')
 
-# Create your views here.
+# Views
 
 def home(request):
     return render(request, 'home.html')
