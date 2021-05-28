@@ -17,8 +17,10 @@
 #### Technologies Used
 * Python
 * Django
+* Javascript
 * Postgresql
-* theAudioDB api
+* theAudioDB API
+* Songkick API
 
 
 #### Getting Started
