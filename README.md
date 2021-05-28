@@ -17,6 +17,7 @@
 #### Technologies Used
 * Python
 * Django
+* Materialize CSS
 * Javascript
 * Postgresql
 * theAudioDB API
